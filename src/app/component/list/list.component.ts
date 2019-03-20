@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
-import { RestaurantService } from '../service/restaurant.service';
+import { Cuisine } from 'src/app/model/cuisine';
+import { Category } from 'src/app/model/category';
+import { RestaurantService } from 'src/app/service/restaurant.service';
 
 @Component({
   selector: 'app-list',
@@ -14,16 +16,24 @@ import { RestaurantService } from '../service/restaurant.service';
 
 export class ListComponent implements OnInit {
 
-  restaurant: any[] = [];
+  cuisine: Cuisine[] = [];
+  category: Category[] = [];
 
   constructor(private restaurantService: RestaurantService) { }
 
   ngOnInit(): void {
     this.restaurantService.getCuisines()
       .subscribe(res => {
-        this.restaurant = res;
+        this.cuisine = res;
         console.log(res);
-        return this.restaurant;
+        return this.cuisine;
+      });
+
+      this.restaurantService.getCategories()
+      .subscribe(res => {
+        this.category = res;
+        console.log(res);
+        return this.category;
       });
   }
 
