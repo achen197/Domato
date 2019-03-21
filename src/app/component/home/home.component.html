@@ -1,3 +1,65 @@
-<p>
-  home works!
-</p>
+<!-- 
+<ng-container>
+    <div *ngFor="let c of cuisine">
+      {{c.cuisine.cuisine_name}}
+    </div>
+  </ng-container>
+  <span>=====</span>
+  <ng-container>
+      <div *ngFor="let cat of category">
+        {{cat.categories.name}}
+      </div>
+    </ng-container>
+   -->
+<div class="conatiner-full search-form">
+  <div class="search row">
+    <div class="col-12">
+    <form>    
+      <mat-form-field>
+        <mat-label>Cuisine</mat-label>
+        <mat-select [(value)]="selectedCuisine" [(ngModel)]="selectedCuisine" [ngModelOptions]="{standalone: true}">
+          <mat-option *ngFor="let c of cuisine" value="{{c.cuisine.cuisine_id}}">{{c.cuisine.cuisine_name}}</mat-option>
+         </mat-select>
+      </mat-form-field> 
+      
+      <mat-form-field>
+        <mat-label>Category</mat-label>
+        <mat-select [(value)]="selectedCuisine" [(ngModel)]="selectedCategory" [ngModelOptions]="{standalone: true}">
+          <mat-option *ngFor="let cat of category" value="{{cat.categories.id}}">{{cat.categories.name}}</mat-option>
+         </mat-select>
+      </mat-form-field>  
+
+      <mat-form-field class="example-full-width">
+            <input matInput placeholder="Radius" [(ngModel)]="distance" [ngModelOptions]="{standalone: true}">
+          </mat-form-field>
+
+        <button (click)="setValue(distance, selectedCuisine, selectedCuisine)"><a routerLink="/list">Search</a></button>
+      </form>
+
+    </div>
+    </div>
+
+    <div class="row">
+      <div class="col-4">
+          <div class="restaurants">
+              <div class="card">
+                yeet
+              </div>
+            </div>
+      </div>
+      <div class="col-4">
+          <div class="restaurants">
+              <div class="card">
+                yeet 1
+              </div>
+            </div>
+      </div>
+      <div class="col-4">
+          <div class="restaurants">
+              <div class="card">
+                yeet 2
+              </div>
+            </div>
+      </div>
+    </div>
+</div>
