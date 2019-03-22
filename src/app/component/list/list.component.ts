@@ -18,12 +18,13 @@ import { Search } from 'src/app/model/search';
 export class ListComponent implements OnInit {
   distance: number;
   selectedCuisine: number;
+  selectedCategory: number;
   search: Search[] = [];
 
   constructor(private restaurantService: RestaurantService) { }
 
   ngOnInit(): void {
-    this.restaurantService.getSearch(this.distance, this.selectedCuisine)
+    this.restaurantService.getSearch(this.distance, this.selectedCuisine, this.selectedCategory)
       .subscribe(res => {
         this.search = res;
         console.log(res);
