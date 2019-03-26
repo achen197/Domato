@@ -12,10 +12,10 @@
       <form>
         <div class="form-row">
           <div class="col-4">
-            <select class="form-control" [(value)]="selectedCuisine" [(ngModel)]="selectedCuisine"
+            <select name="cuisine" class="form-control" [(value)]="selectedCuisine" [(ngModel)]="selectedCuisine"
               [ngModelOptions]="{standalone: true}">
-              <option selected>Cuisine</option>
-              <option *ngFor="let c of cuisine" value="{{c.cuisine_id}}">{{c.cuisine_name}}</option>
+              <option value="" disabled>Choose a state</option>
+              <option *ngFor="let c of cuisine" value="{{c.cuisine_id}}" [selected]="c.cuisine_name === 'Asian'">{{c.cuisine_name}}</option>
             </select>
           </div>
           <div class="col-4">
@@ -25,13 +25,8 @@
               <option *ngFor="let cat of category" value="{{cat.id}}">{{cat.name}}</option>
             </select>
           </div>
-          <!-- <div class="col-2">
-              <button (click)="getUserPosition()">Current Location</button>
-            </div> -->
 
           <div class="col-4">
-            <!-- <input type="text" class="form-control" placeholder="Radius" [(ngModel)]="distance"
-              [ngModelOptions]="{standalone: true}"> -->
             <div class="input-group">
               <input type="text" class="form-control" placeholder="Radius" [(ngModel)]="distance"
                 [ngModelOptions]="{standalone: true}" aria-label="Recipient's username" aria-describedby="basic-addon2">
@@ -52,6 +47,7 @@
         <div class="col-2">
           <div class="restaurants">
             <div class="quick-category">
+              <img src="../../../assets/breakfast.png" width="60px" alt="Breakfast">
               <span class="category-title">Breakfast</span>
             </div>
           </div>
@@ -59,35 +55,40 @@
         <div class="col-2">
           <div class="restaurants">
             <div class="quick-category">
-                <span class="category-title">Breakfast</span>              
+                <img src="../../../assets/fast-food.png" width="60px" alt="Lunch">
+                <span class="category-title">Lunch</span>              
             </div>
           </div>
         </div>
         <div class="col-2">
           <div class="restaurants">
             <div class="quick-category">
-                <span class="category-title">Breakfast</span>
+                <img src="../../../assets/dinner.png" width="60px" alt="Dinner">
+                <span class="category-title">Dinner</span>
             </div>
           </div>
         </div>
         <div class="col-2">
           <div class="restaurants">
             <div class="quick-category">
-                <span class="category-title">Breakfast</span>            
+                <img src="../../../assets/noodles.png" width="60px" alt="Chinese">
+                <span class="category-title">Chinese</span>            
             </div>
           </div>
         </div>
         <div class="col-2">
             <div class="restaurants">
               <div class="quick-category">
-                  <span class="category-title">Breakfast</span>
+                  <img src="../../../assets/coffee.png" width="60px" alt="Cafes">
+                  <span class="category-title">Cafes</span>
               </div>
             </div>
           </div>
           <div class="col-2">
               <div class="restaurants">
                 <div class="quick-category">
-                    <span class="category-title">Breakfast</span>
+                <img src="../../../assets/cheers.png" width="60px" alt="Pubs & Bars">
+                    <span class="category-title">Pubs</span>
                 </div>
               </div>
             </div>

@@ -55,7 +55,7 @@ h5 {
     #ffc3a0,
     #ffafbd
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  height: 65vh;
+  height: 75vh;
 
   .carrot, .domato {
     display: block;
@@ -87,14 +87,38 @@ h5 {
     }
 }
 
+.restaurants {
+  background: rgba(255, 255, 255, 0.1);
+
+  &:hover {
+    background: none;
+    transition: ease-in-out 0.2s;
+    -webkit-transition: ease-in-out 0.2s;
+  }
+}
+
 .quick-search {
-    top: 25vh;
+    top: 32vh;
     position: relative;
     margin: 0 15rem;
 
     .quick-category {
         text-align: center;
+        border: 1.5px solid white;
+        padding: 1rem;
+        border-radius: 10px;
     }
+
+    .category-title {
+      font-family: $head-font;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      font-weight: 500;
+      color: white;
+      display: block;
+      padding-top: 0.75rem; 
+      letter-spacing: 1px;
+  }
 }
 
 
