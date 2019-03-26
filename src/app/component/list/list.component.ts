@@ -27,6 +27,7 @@ export class ListComponent implements OnInit {
   restLong: number;
   search: Search[] = [];
   restaurant: Restaurant[] = [];
+  counter: number = 0;
 
   constructor(private restaurantService: RestaurantService) { }
 
@@ -44,7 +45,7 @@ export class ListComponent implements OnInit {
           let userLong = this.userLong;
           let restLat = dist.location.latitude;
           let restLong = dist.location.longitude;
-          let R = 6371e3;
+          let R = 6371;
 
           let dLat = deg2rad(userLat - restLat);
           let dLon = deg2rad(userLong - restLong);
@@ -55,10 +56,8 @@ export class ListComponent implements OnInit {
 
           let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
           let d = R * c;
-          this.meters = d;
-          return d;
+          return d.toFixed(2);
           });
-        console.log(this.meters, this.distance);
         return this.search, this.distance;
       });
 

@@ -10,7 +10,7 @@
   </nav>
 
 <div class="row">
-  <div class="card col-lg-4 col-md-4 col-sm-6 col-xs-12" *ngFor="let s of search">
+  <div class="card col-lg-4 col-md-4 col-sm-6 col-xs-12" *ngFor="let s of search; let i = index">
       <div class="restaurant-img" [ngStyle]="{background: 'url(' + s.featured_image + ')'}">
       </div>
       <!-- <img class="card-img-top" src="{{s.featured_image}}" alt="Card image cap"> -->
@@ -21,8 +21,7 @@
           <mat-icon [ngClass]="{'good-rating': s.user_rating.aggregate_rating > 4.5, 'bad-rating': s.user_rating.aggregate_rating < 4.5}">star</mat-icon>
           ({{s.user_rating.votes}})</span>
           <span class="badge badge-pill badge-light" *ngIf="s.user_rating.votes <= 0">No Ratings</span>
-            <p>{{meters}} {{distance}}</p>
-     
+              <span>{{distance[i]}}km</span>
         </div>
   </div>
 </div>
