@@ -40,6 +40,13 @@ h5 {
     }
 }
 
+.results {
+    .row {
+        display: inline-flex;
+        justify-content: center;
+    }
+}
+
 .search {
   background: #ffafbd; /* fallback for old browsers */
   background: -webkit-linear-gradient(30deg, #ffc3a0, #ffafbd); /* Chrome 10-25, Safari 5.1-6 */
@@ -50,14 +57,14 @@ h5 {
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   height: 65vh;
 
-  .carrot, span {
+  .carrot, .domato {
     display: block;
     margin: 0 auto;
     position: relative;
     top: 15vh;
     }
 
-    span {
+    .domato {
         text-align: center;
         font-size: 1.5rem;
         font-weight: 700;
@@ -66,7 +73,30 @@ h5 {
         letter-spacing: 1px;
         color: #FFF;
     }
+
+    .input-group {
+        align-items: center;
+    }
+
+    .input-group-text {
+        border-radius: 25px;
+        border: none;
+        padding: .35rem .75rem;
+        font-weight: 500;
+        font-family: $head-font;
+    }
 }
+
+.quick-search {
+    top: 25vh;
+    position: relative;
+    margin: 0 15rem;
+
+    .quick-category {
+        text-align: center;
+    }
+}
+
 
 .form-row {
   margin: 0 15vw;
@@ -146,6 +176,15 @@ h5 {
 .card {
     margin: 1rem;
     padding: 0;
+
+    .distance {
+        float: right;
+        font-size: 0.9rem;
+    }
+
+    .price-range {
+        font-size: 0.8rem;
+    }
 }
 
 .restaurant-img {

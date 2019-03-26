@@ -45,7 +45,6 @@ export class HomeComponent implements OnInit {
       navigator.geolocation.getCurrentPosition(position => {
         this.lat = position.coords.latitude;
         this.long =  position.coords.longitude;
-        console.log(this.lat, this.long);
       });
 
   }
@@ -54,11 +53,10 @@ export class HomeComponent implements OnInit {
     navigator.geolocation.getCurrentPosition(position => {
       this.lat = position.coords.latitude;
       this.long =  position.coords.longitude;
-      // console.log(this.lat, this.long);
     });
   }
 
   setValue(distance, selectedCuisine, selectedCategory) {
-    this.restaurantService.setData(distance, selectedCuisine, selectedCategory, this.lat, this.long);
+    this.restaurantService.setData(distance * 1000, selectedCuisine, selectedCategory, this.lat, this.long);
   }
 }

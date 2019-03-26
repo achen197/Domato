@@ -17,8 +17,7 @@ import { Restaurant } from 'src/app/model/restaurant';
 })
 
 export class ListComponent implements OnInit {
-  distance: any;
-  meters: any;
+  distance: string[];
   selectedCuisine: number;
   selectedCategory: number;
   userLat: number;
@@ -27,9 +26,8 @@ export class ListComponent implements OnInit {
   restLong: number;
   search: Search[] = [];
   restaurant: Restaurant[] = [];
-  counter: number = 0;
 
-  constructor(private restaurantService: RestaurantService) { }
+  constructor(private restaurantService: RestaurantService) { }  
 
   ngOnInit(): void {
 
@@ -58,6 +56,7 @@ export class ListComponent implements OnInit {
           let d = R * c;
           return d.toFixed(2);
           });
+          console.log(res);
         return this.search, this.distance;
       });
 
@@ -65,32 +64,9 @@ export class ListComponent implements OnInit {
         this.userLat = position.coords.latitude;
         this.userLong =  position.coords.longitude;
       });
+    }
 
-
-
-      this.restaurantService.getRestaurants()
-      .subscribe(res => {
-        let userLat = this.userLat;
-        let userLong = this.userLong;
-        let restLat = res.location.latitude;
-        let restLong = res.location.longitude;
-        let R = 6371e3;
-
-        let dLat = deg2rad(userLat - restLat);
-        let dLon = deg2rad(userLong - restLong);
-        let a =
-        Math.sin(dLat/2) * Math.sin(dLat/2) +
-        Math.cos(deg2rad(userLat)) * Math.cos(deg2rad(restLat)) * 
-        Math.sin(dLon/2) * Math.sin(dLon/2); 
-
-        let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-        let d = R * c;
-        this.distance = d;
-        // console.log(this.distance);
-        return this.distance;
-      });
-
-
-
+    getPriceRange(range) {
+      return "$".repeat(range);
     }
 }
