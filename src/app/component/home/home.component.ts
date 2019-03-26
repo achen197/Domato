@@ -5,6 +5,7 @@ import { Category } from 'src/app/model/category';
 import { RestaurantService } from 'src/app/service/restaurant.service';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
+import { SearchService } from 'src/app/service/search.service';
 
 @Component({
   selector: 'app-home',
@@ -15,9 +16,13 @@ export class HomeComponent implements OnInit {
 
   cuisine: Cuisine[] = [];
   category: Category[] = [];
+  long: number;
+  lat: number;
+  location: number;
 
   constructor(
-    private restaurantService: RestaurantService
+    private restaurantService: RestaurantService,
+    private searchService: SearchService
   ) { }
 
   Cuisine = new FormControl();
@@ -36,9 +41,24 @@ export class HomeComponent implements OnInit {
         this.category = res;
         return this.category;
       });
+
+      navigator.geolocation.getCurrentPosition(position => {
+        this.lat = position.coords.latitude;
+        this.long =  position.coords.longitude;
+        console.log(this.lat, this.long);
+      });
+
+  }
+
+  getUserPosition() {
+    navigator.geolocation.getCurrentPosition(position => {
+      this.lat = position.coords.latitude;
+      this.long =  position.coords.longitude;
+      // console.log(this.lat, this.long);
+    });
   }
 
   setValue(distance, selectedCuisine, selectedCategory) {
-    this.restaurantService.setData(distance, selectedCuisine, selectedCategory);
+    this.restaurantService.setData(distance, selectedCuisine, selectedCategory, this.lat, this.long);
   }
 }

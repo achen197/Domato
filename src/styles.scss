@@ -15,6 +15,31 @@ h5 {
   font-family: $head-font;
 }
 
+.navbar {
+    background: #ffafbd; /* fallback for old browsers */
+    background: -webkit-linear-gradient(-60deg, #ffc3a0, #ffafbd); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+      -60deg,
+      #ffc3a0,
+      #ffafbd
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    .navbar-brand {
+        color: #FFF !important;
+        font-size: 1.25rem;
+        font-family: $head-font;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 500;
+        display: inline-flex;
+        align-items: center;
+
+        img {
+            margin-right: 0.75rem;
+        }
+    }
+}
+
 .search {
   background: #ffafbd; /* fallback for old browsers */
   background: -webkit-linear-gradient(30deg, #ffc3a0, #ffafbd); /* Chrome 10-25, Safari 5.1-6 */
@@ -93,4 +118,38 @@ h5 {
      {
       background: #ff6e7e;
     }
+}
+
+.badge-pill {
+    display: inline-flex;
+    align-items: center;
+
+    .mat-icon {
+        width: 15px;
+        height: 15px;
+        // padding: 0 5px;
+    }
+
+    .material-icons {
+        font-size: 15px;
+    }
+
+    .good-rating {
+        color: #ffdf32;
+    }
+    
+    .bad-rating {
+        color: #595959;
+    }
+}
+
+.card {
+    margin: 1rem;
+    padding: 0;
+}
+
+.restaurant-img {
+    width: 100%;
+    height: 250px;
+    background-size: cover !important;
 }

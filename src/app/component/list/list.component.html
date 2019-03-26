@@ -1,7 +1,28 @@
+<nav class="navbar justify-content-between">
+    <a href="/home" class="navbar-brand">
+        <img src="assets/doughnut.png" width="35" height="35" class="carrot" alt="">      
+      Domato
+    </a>
+    <form class="form-inline">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-primary" type="submit">Search</button>
+    </form>
+  </nav>
 
-<ng-container>
-  <div *ngFor="let s of search">
-    {{s.restaurant.name}} | {{s.restaurant.location.address}}
+<div class="row">
+  <div class="card col-lg-4 col-md-4 col-sm-6 col-xs-12" *ngFor="let s of search">
+      <div class="restaurant-img" [ngStyle]="{background: 'url(' + s.featured_image + ')'}">
+      </div>
+      <!-- <img class="card-img-top" src="{{s.featured_image}}" alt="Card image cap"> -->
+      <div class="card-body">
+        <h5 class="card-title">{{s.name}}</h5>
+        <span class="badge badge-pill badge-light">{{s.cuisines}}</span>
+        <span class="badge badge-pill badge-light" *ngIf="s.user_rating.votes > 0">{{s.user_rating.aggregate_rating}} 
+          <mat-icon [ngClass]="{'good-rating': s.user_rating.aggregate_rating > 4.5, 'bad-rating': s.user_rating.aggregate_rating < 4.5}">star</mat-icon>
+          ({{s.user_rating.votes}})</span>
+          <span class="badge badge-pill badge-light" *ngIf="s.user_rating.votes <= 0">No Ratings</span>
+            <p>{{meters}} {{distance}}</p>
+     
+        </div>
   </div>
-</ng-container>
-
+</div>

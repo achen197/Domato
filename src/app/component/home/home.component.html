@@ -11,28 +11,31 @@
           </div>
       <form>
         <div class="form-row">
-          <div class="col-5">
+          <div class="col-4">
             <select class="form-control" [(value)]="selectedCuisine" [(ngModel)]="selectedCuisine"
               [ngModelOptions]="{standalone: true}">
               <option selected>Cuisine</option>
-              <option *ngFor="let c of cuisine" value="{{c.cuisine.cuisine_id}}">{{c.cuisine.cuisine_name}}</option>
+              <option *ngFor="let c of cuisine" value="{{c.cuisine_id}}">{{c.cuisine_name}}</option>
             </select>
           </div>
-          <div class="col-5">
+          <div class="col-4">
             <select class="form-control" [(value)]="selectedCategory" [(ngModel)]="selectedCategory"
               [ngModelOptions]="{standalone: true}">
               <option selected>Category</option>
-              <option *ngFor="let cat of category" value="{{cat.categories.id}}">{{cat.categories.name}}</option>
+              <option *ngFor="let cat of category" value="{{cat.id}}">{{cat.name}}</option>
             </select>
           </div>
+          <!-- <div class="col-2">
+              <button (click)="getUserPosition()">Current Location</button>
+            </div> -->
 
-          <div class="col-2">
+          <div class="col-4">
             <input type="text" class="form-control" placeholder="Radius" [(ngModel)]="distance"
               [ngModelOptions]="{standalone: true}">
           </div>
           <div class="search-btn">
             <a routerLink="/list"><button type="button" class="btn btn-primary"
-                (click)="setValue(distance, selectedCuisine, selectedCategory)">Let's Yeet This Wheat</button></a>
+                (click)="setValue(distance, selectedCuisine, selectedCategory, lat, long)">Let's Yeet This Wheat</button></a>
           </div>
         </div>
       </form>

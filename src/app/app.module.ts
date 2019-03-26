@@ -10,7 +10,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { RestaurantService } from './service/restaurant.service';
 import { HomeComponent } from './component/home/home.component';
 
-import { MatAutocompleteModule , MatInputModule, MatSelectModule} from '@angular/material';
+import { MatAutocompleteModule , MatInputModule, MatSelectModule,
+  MatIconModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import { MatAutocompleteModule , MatInputModule, MatSelectModule} from '@angular
     BrowserAnimationsModule,
     MatAutocompleteModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,MatIconModule
   ],
   providers: [RestaurantService],
   bootstrap: [AppComponent]
