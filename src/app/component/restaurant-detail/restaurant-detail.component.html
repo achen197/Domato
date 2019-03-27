@@ -1,11 +1,11 @@
-<div *ngIf="r">
+<div *ngIf="rest">
     <div class="container-full restaurant-deets">
       <div class="row featured-img">
-          <div class="restaurant-img" [ngStyle]="{background: 'url(' + r.featured_image + ')'}"></div>
+          <div class="feat-img" [ngStyle]="{background: 'url(' + rest.featured_image + ')'}"></div>
       </div>
         <button class="btn btn-primary" (click)="goBack()">Back</button>
-        <h2>{{r.name}} <span class="location"> ({{r.location.locality}})</span></h2>
-        <p>Address: {{r.location.address}}</p>
+        <h2>{{rest.name}} <span class="location"> ({{rest.location.locality}})</span></h2>
+        <p>Address: {{rest.location.address}}</p>
 
 
       </div>

@@ -170,7 +170,7 @@ h5 {
     &:hover,
     &:active
      {
-      background: #ff6e7e;
+      background: #ff6e7e !important;
     }
 }
 
@@ -221,8 +221,10 @@ h5 {
     }
 }
 
-.restaurant-img {
+.restaurant-img,
+.feat-img {
     width: 100%;
     height: 250px;
     background-size: cover !important;
+    background-position: center !important;
 }

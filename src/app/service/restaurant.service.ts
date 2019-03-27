@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import { map, combineLatest } from 'rxjs/operators'
+import { merge } from 'rxjs';
 import { Observable } from 'rxjs';
 import { Category, ThingWrapper, CategoryRes } from '../model/category';
 import { Cuisine, CuisineRes } from '../model/cuisine';
 import { Restaurant } from '../model/restaurant';
 import { Search, SearchRes } from '../model/search';
+import { Review, ReviewRes } from '../model/review';
 
 @Injectable({
   providedIn: 'root'
@@ -53,6 +55,13 @@ export class RestaurantService {
     return this.http.get<Restaurant[]>(`https://developers.zomato.com/api/v2.1/restaurant?res_id=${id}`, { headers: {'user-key': this.apiKey} });
   }
 
+  getReviews(id: number): Observable<Review[]> {
+    return this.http.get<ReviewRes>(`https://developers.zomato.com/api/v2.1/reviews?res_id=${id}`, { headers: {'user-key': this.apiKey} })
+    .pipe(map(res => {
+      return res.user_reviews.map(arr => arr.review)
+    }));
+  }
+
   getSearch(distance, selectedCuisine, selectedCategory, lat, long): Observable<Search[]> {
     distance = this.distance;
     selectedCuisine = this.selectedCuisine;
@@ -66,6 +75,21 @@ export class RestaurantService {
     }));
   }
 
-  
+  getAllRestaurantDetail(id: number) {
+    // let allData = combineLatest(this.getRestaurants(id), this.getReviews(id))
+    //   .pipe(map(([first, second]) => {
+    //     return {first, second};
+    //   }));
+
+    let data = combineLatest(
+      this.getReviews(id),
+      this.getRestaurants(id) 
+    ).pipe(
+      map(([first, second]) => {
+        return { first, second };
+      })
+    );
+  }
+
 }
 

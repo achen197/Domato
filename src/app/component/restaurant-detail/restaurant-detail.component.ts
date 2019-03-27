@@ -3,6 +3,7 @@ import { RestaurantService } from 'src/app/service/restaurant.service';
 import { ActivatedRoute } from '@angular/router';
 import { Restaurant } from 'src/app/model/restaurant';
 import { Location } from '@angular/common';
+import { Review } from 'src/app/model/review';
 
 @Component({
   selector: 'app-restaurant-detail',
@@ -11,7 +12,8 @@ import { Location } from '@angular/common';
 })
 export class RestaurantDetailComponent implements OnInit {
 
-  r: Restaurant[] = [];
+  rest: Restaurant[] = [];
+  review: Review[] = [];
   restId: number;
 
 
@@ -28,7 +30,14 @@ export class RestaurantDetailComponent implements OnInit {
   getRestaurant(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.restaurantService.getRestaurants(id)
-      .subscribe(data => this.r = data);
+      .subscribe(data => this.rest = data);
+  }
+
+  getReview(): void {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.restaurantService.getReviews(id)
+      .subscribe(data => this.review = data);
+      console.log(this.review);
   }
 
   goBack(): void {
