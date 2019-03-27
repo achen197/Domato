@@ -12,12 +12,14 @@ import { HomeComponent } from './component/home/home.component';
 
 import { MatAutocompleteModule , MatInputModule, MatSelectModule,
   MatIconModule} from '@angular/material';
+import { RestaurantDetailComponent } from './component/restaurant-detail/restaurant-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListComponent,
-    HomeComponent
+    HomeComponent,
+    RestaurantDetailComponent
   ],
   imports: [
     BrowserModule,

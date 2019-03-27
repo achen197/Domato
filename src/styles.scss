@@ -209,6 +209,16 @@ h5 {
     .price-range {
         font-size: 0.8rem;
     }
+
+    a {
+      color: #2d2d2d;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: none;
+        color: #545454;
+      }
+    }
 }
 
 .restaurant-img {

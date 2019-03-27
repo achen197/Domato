@@ -1,0 +1,13 @@
+<div *ngIf="r">
+    <div class="container-full restaurant-deets">
+      <div class="row featured-img">
+          <div class="restaurant-img" [ngStyle]="{background: 'url(' + r.featured_image + ')'}"></div>
+      </div>
+        <button class="btn btn-primary" (click)="goBack()">Back</button>
+        <h2>{{r.name}} <span class="location"> ({{r.location.locality}})</span></h2>
+        <p>Address: {{r.location.address}}</p>
+
+
+      </div>
+</div>
+

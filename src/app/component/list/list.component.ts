@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Cuisine } from 'src/app/model/cuisine';
 import { Category } from 'src/app/model/category';
 import { RestaurantService } from 'src/app/service/restaurant.service';
@@ -8,8 +8,7 @@ import { Restaurant } from 'src/app/model/restaurant';
 
 @Component({
   selector: 'app-list',
-  templateUrl: './list.component.html',
-  styleUrls: ['./list.component.sass']
+  templateUrl: './list.component.html'
 })
 
 @Injectable({
@@ -26,6 +25,8 @@ export class ListComponent implements OnInit {
   restLong: number;
   search: Search[] = [];
   restaurant: Restaurant[] = [];
+
+  @Input() restId: string;
 
   constructor(private restaurantService: RestaurantService) { }  
 

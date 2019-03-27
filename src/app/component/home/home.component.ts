@@ -9,8 +9,7 @@ import { SearchService } from 'src/app/service/search.service';
 
 @Component({
   selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.sass']
+  templateUrl: './home.component.html'
 })
 export class HomeComponent implements OnInit {
 

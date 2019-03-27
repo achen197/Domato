@@ -14,7 +14,7 @@
           <div class="col-4">
             <select name="cuisine" class="form-control" [(value)]="selectedCuisine" [(ngModel)]="selectedCuisine"
               [ngModelOptions]="{standalone: true}">
-              <option value="" disabled>Choose a state</option>
+              <option value="" disabled>Choose a Cuisine</option>
               <option *ngFor="let c of cuisine" value="{{c.cuisine_id}}" [selected]="c.cuisine_name === 'Asian'">{{c.cuisine_name}}</option>
             </select>
           </div>
@@ -47,7 +47,7 @@
         <div class="col-2">
           <div class="restaurants">
             <div class="quick-category">
-              <img src="../../../assets/breakfast.png" width="60px" alt="Breakfast">
+              <img src="../../../assets/breakfast.png" width="50px" alt="Breakfast">
               <span class="category-title">Breakfast</span>
             </div>
           </div>
@@ -55,7 +55,7 @@
         <div class="col-2">
           <div class="restaurants">
             <div class="quick-category">
-                <img src="../../../assets/fast-food.png" width="60px" alt="Lunch">
+                <img src="../../../assets/fast-food.png" width="50px" alt="Lunch">
                 <span class="category-title">Lunch</span>              
             </div>
           </div>
@@ -63,7 +63,7 @@
         <div class="col-2">
           <div class="restaurants">
             <div class="quick-category">
-                <img src="../../../assets/dinner.png" width="60px" alt="Dinner">
+                <img src="../../../assets/dinner.png" width="50px" alt="Dinner">
                 <span class="category-title">Dinner</span>
             </div>
           </div>
@@ -71,7 +71,7 @@
         <div class="col-2">
           <div class="restaurants">
             <div class="quick-category">
-                <img src="../../../assets/noodles.png" width="60px" alt="Chinese">
+                <img src="../../../assets/noodles.png" width="50px" alt="Chinese">
                 <span class="category-title">Chinese</span>            
             </div>
           </div>
@@ -79,7 +79,7 @@
         <div class="col-2">
             <div class="restaurants">
               <div class="quick-category">
-                  <img src="../../../assets/coffee.png" width="60px" alt="Cafes">
+                  <img src="../../../assets/coffee.png" width="50px" alt="Cafes">
                   <span class="category-title">Cafes</span>
               </div>
             </div>
@@ -87,7 +87,7 @@
           <div class="col-2">
               <div class="restaurants">
                 <div class="quick-category">
-                <img src="../../../assets/cheers.png" width="60px" alt="Pubs & Bars">
+                <img src="../../../assets/cheers.png" width="50px" alt="Pubs & Bars">
                     <span class="category-title">Pubs</span>
                 </div>
               </div>

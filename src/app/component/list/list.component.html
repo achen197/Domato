@@ -1,20 +1,12 @@
-<nav class="navbar justify-content-between">
-    <a href="/home" class="navbar-brand">
-        <img src="assets/doughnut.png" width="35" height="35" class="carrot" alt="">      
-      Domato
-    </a>
-    <form class="form-inline">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-primary" type="submit">Search</button>
-    </form>
-  </nav>
-<div class="container-full results">
+
+<div class="container-full results mt-4">
   <div class="row">
-    <div class="card col-lg-3 col-md-4 col-sm-6 col-xs-12" *ngFor="let s of search; let i = index; let p = price;">
+    <div class="card col-lg-3 col-md-4 col-sm-6 col-xs-12" *ngFor="let s of search; let i = index;">
+      
         <div class="restaurant-img" [ngStyle]="{background: 'url(' + s.featured_image + ')'}">
         </div>
         <div class="card-body">
-          <h5 class="card-title">{{s.name}} <span class="location">({{s.location.locality}})</span></h5>
+          <a routerLink="/detail/{{s.R.res_id}}"><h5 class="card-title">{{s.name}} <span class="location">({{s.location.locality}})</span></h5></a>
           <span class="price-range">{{ getPriceRange(s.price_range) }}</span>
           <span class="badge badge-pill badge-light">{{s.cuisines}}</span> 
           <span class="badge badge-pill badge-light" *ngIf="s.user_rating.votes > 0">{{s.user_rating.aggregate_rating}} 
