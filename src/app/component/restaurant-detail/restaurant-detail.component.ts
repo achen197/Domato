@@ -39,7 +39,12 @@ export class RestaurantDetailComponent implements OnInit {
       .subscribe(data => this.review = data);
       console.log(this.review);
   }
+  
 
+  getPriceRange(range) {
+    return "$".repeat(range);
+  }
+  
   goBack(): void {
     this.location.back();
   }

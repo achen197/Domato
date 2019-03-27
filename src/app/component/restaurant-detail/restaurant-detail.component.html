@@ -1,13 +1,26 @@
-<div *ngIf="rest">
+<nav class="navbar justify-content-between">
+  <a href="/home" class="navbar-brand">
+    <img src="assets/doughnut.png" width="35" height="35" class="carrot" alt="">
+    D'oh-mato
+  </a>
+  <form class="form-inline">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-primary" type="submit">Search</button>
+  </form>
+</nav>
+<div class="container">
+  <div *ngIf="rest">
     <div class="container-full restaurant-deets">
       <div class="row featured-img">
-          <div class="feat-img" [ngStyle]="{background: 'url(' + rest.featured_image + ')'}"></div>
+        <div class="feat-img" [ngStyle]="{background: 'url(' + rest.featured_image + ')'}"></div>
       </div>
-        <button class="btn btn-primary" (click)="goBack()">Back</button>
-        <h2>{{rest.name}} <span class="location"> ({{rest.location.locality}})</span></h2>
-        <p>Address: {{rest.location.address}}</p>
-
-
-      </div>
+      <!-- <button class="btn btn-primary" (click)="goBack()">Back</button> -->
+      <h2>{{rest.name}} <span class="location"> ({{rest.location.locality}})</span></h2>
+      <p>{{getPriceRange(rest.price_range)}}</p>
+      <span>{{rest.cuisines}}</span>
+      <span>${{rest.average_cost_for_two}}</span>
+      <p>Address: {{rest.location.address}}</p>
+      <p>Rating: {{rest.user_rating.aggregate_rating}} ( {{rest.user_rating.votes}})</p>
+    </div>
+  </div>
 </div>
-

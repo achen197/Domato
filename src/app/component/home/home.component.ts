@@ -6,6 +6,7 @@ import { RestaurantService } from 'src/app/service/restaurant.service';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { SearchService } from 'src/app/service/search.service';
+import { Search } from 'src/app/model/search';
 
 @Component({
   selector: 'app-home',
@@ -15,6 +16,7 @@ export class HomeComponent implements OnInit {
 
   cuisine: Cuisine[] = [];
   category: Category[] = [];
+  trending: Search[] = [];
   long: number;
   lat: number;
   location: number;
@@ -40,6 +42,13 @@ export class HomeComponent implements OnInit {
         this.category = res;
         return this.category;
       });
+
+      this.restaurantService.getTrending()
+        .subscribe(res => {
+          this.trending = res;
+          console.log(res);
+          return this.trending;
+        });
 
       navigator.geolocation.getCurrentPosition(position => {
         this.lat = position.coords.latitude;

@@ -62,6 +62,13 @@ export class RestaurantService {
     }));
   }
 
+  getTrending(): Observable<Search[]> {
+    return this.http.get<SearchRes>("https://developers.zomato.com/api/v2.1/search?entity_id=298&entity_type=city&count=6&collection_id=274852&sort=rating&order=desc", { headers: {'user-key': this.apiKey} })
+    .pipe(map(res =>  {
+      return res.restaurants.map(arr => arr.restaurant)
+    }));
+  }
+
   getSearch(distance, selectedCuisine, selectedCategory, lat, long): Observable<Search[]> {
     distance = this.distance;
     selectedCuisine = this.selectedCuisine;
@@ -75,21 +82,8 @@ export class RestaurantService {
     }));
   }
 
-  getAllRestaurantDetail(id: number) {
-    // let allData = combineLatest(this.getRestaurants(id), this.getReviews(id))
-    //   .pipe(map(([first, second]) => {
-    //     return {first, second};
-    //   }));
+// first = this.getRestaurants(id);
 
-    let data = combineLatest(
-      this.getReviews(id),
-      this.getRestaurants(id) 
-    ).pipe(
-      map(([first, second]) => {
-        return { first, second };
-      })
-    );
-  }
 
 }
 
