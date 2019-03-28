@@ -64,6 +64,11 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  setCategory(id) {
+    this.restaurantService.setCategory(id, this.lat, this.long);
+    console.log(id);
+  }
+
   setValue(distance, selectedCuisine, selectedCategory) {
     this.restaurantService.setData(distance * 1000, selectedCuisine, selectedCategory, this.lat, this.long);
   }

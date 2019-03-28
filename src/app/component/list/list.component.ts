@@ -19,6 +19,7 @@ export class ListComponent implements OnInit {
   distance: string[];
   selectedCuisine: number;
   selectedCategory: number;
+  id: number;
   userLat: number;
   userLong: number;
   restLat: number;
@@ -35,6 +36,12 @@ export class ListComponent implements OnInit {
     function deg2rad(deg) {
       return deg * (Math.PI/180);
     }
+
+    this.restaurantService.getCategory(this.id, this.userLat, this.userLong)
+      .subscribe(res => {
+        this.search = res;
+        return this.search;
+      })
 
     this.restaurantService.getSearch(this.distance, this.selectedCuisine, this.selectedCategory, this.userLat, this.userLong)
       .subscribe(res => {

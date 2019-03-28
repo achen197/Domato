@@ -22,6 +22,7 @@ export class RestaurantService {
   private selectedCategory: number;
   private lat: number;
   private long: number;
+  private id: number;
 
   getData() {
     console.log(this.selectedCuisine);
@@ -34,13 +35,28 @@ export class RestaurantService {
     this.selectedCategory = selectedCategory;
     this.lat = lat;
     this.long = long;
-    console.log(this.selectedCuisine + " setting " + this.distance + " " + this.selectedCategory + this.lat + this.long);
+  }
+
+  setCategory(id, lat, long) {
+    this.id = id;
+    this.lat = lat;
+    this.long = long;
   }
 
   getCategories(): Observable<Category[]> {
     return this.http.get<CategoryRes>("https://developers.zomato.com/api/v2.1/categories", { headers: {'user-key': this.apiKey} })
     .pipe(map(res => {
       return res.categories.map(arr => arr.categories)
+    }));
+  }
+
+  getCategory(id, lat, long) : Observable<Search[]> {
+    id = this.id;
+    lat = this.lat;
+    long = this.long;
+    return this.http.get<SearchRes>(`https://developers.zomato.com/api/v2.1/search?lat=${lat}&lon=${long}&radius=5000&category=${id}&sort=rating&order=desc`, { headers: {'user-key': this.apiKey} })
+    .pipe(map(res =>  {
+      return res.restaurants.map(arr => arr.restaurant)
     }));
   }
 
@@ -81,9 +97,5 @@ export class RestaurantService {
       return res.restaurants.map(arr => arr.restaurant)
     }));
   }
-
-// first = this.getRestaurants(id);
-
-
 }
 

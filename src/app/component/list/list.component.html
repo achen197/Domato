@@ -6,7 +6,9 @@
         <div class="restaurant-img" [ngStyle]="{background: 'url(' + s.featured_image + ')'}">
         </div>
         <div class="card-body">
-          <a routerLink="/detail/{{s.R.res_id}}"><h5 class="card-title">{{s.name}} <span class="location">({{s.location.locality}})</span></h5></a>
+          <a routerLink="/detail/{{s.R.res_id}}"><h5 class="card-title">{{s.name}} 
+            <span class="location">({{s.location.locality}})</span>
+          </h5></a>
           <span class="price-range">{{ getPriceRange(s.price_range) }}</span>
           <span class="badge badge-pill badge-light">{{s.cuisines}}</span> 
           <span class="badge badge-pill badge-light" *ngIf="s.user_rating.votes > 0">{{s.user_rating.aggregate_rating}} 

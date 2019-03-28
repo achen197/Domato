@@ -86,7 +86,7 @@ h5 {
     .input-group-text {
         border-radius: 25px;
         border: none;
-        padding: .35rem .75rem;
+        padding: .345rem .75rem;
         font-weight: 500;
         font-family: $head-font;
     }
@@ -124,6 +124,9 @@ h5 {
       padding-top: 0.75rem; 
       letter-spacing: 1px;
   }
+    a:hover {
+      text-decoration: none;
+    }
 }
 
 
@@ -254,6 +257,7 @@ h5 {
   
   .bob-img {
     height: 175px;
+    // width: 320px;
     border-radius: 5px;
     position: relative;
     margin-top: 1rem;
