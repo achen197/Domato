@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Component, OnInit, Input } from '@angular/core';
-import { Cuisine } from 'src/app/model/cuisine';
-import { Category } from 'src/app/model/category';
 import { RestaurantService } from 'src/app/service/restaurant.service';
 import { Search } from 'src/app/model/search';
 import { Restaurant } from 'src/app/model/restaurant';
+import { Review } from 'src/app/model/review';
 
 @Component({
   selector: 'app-list',
@@ -24,17 +23,18 @@ export class ListComponent implements OnInit {
   userLong: number;
   restLat: number;
   restLong: number;
-  search: Search[] = [];
-  restaurant: Restaurant[] = [];
+  search: Search[];
+  restaurant: Restaurant[];
+  review: Review[];
 
   @Input() restId: string;
 
-  constructor(private restaurantService: RestaurantService) { }  
+  constructor(private restaurantService: RestaurantService) { }
 
   ngOnInit(): void {
 
     function deg2rad(deg) {
-      return deg * (Math.PI/180);
+      return deg * (Math.PI / 180);
     }
 
     this.restaurantService.getCategory(this.id, this.userLat, this.userLong)
@@ -56,25 +56,31 @@ export class ListComponent implements OnInit {
           let dLat = deg2rad(userLat - restLat);
           let dLon = deg2rad(userLong - restLong);
           let a =
-          Math.sin(dLat/2) * Math.sin(dLat/2) +
-          Math.cos(deg2rad(userLat)) * Math.cos(deg2rad(restLat)) * 
-          Math.sin(dLon/2) * Math.sin(dLon/2); 
+            Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+            Math.cos(deg2rad(userLat)) * Math.cos(deg2rad(restLat)) *
+            Math.sin(dLon / 2) * Math.sin(dLon / 2);
 
-          let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+          let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
           let d = R * c;
           return d.toFixed(2);
-          });
-          console.log(res);
+        });
+        console.log(res);
         return this.search, this.distance;
       });
 
-      navigator.geolocation.getCurrentPosition(position => {
-        this.userLat = position.coords.latitude;
-        this.userLong =  position.coords.longitude;
-      });
-    }
+    // this.restaurantService.getReviews(this.id)
+    //   .subscribe(res => {
+    //     console.l
+    //     this.review = res;
+    //   });
 
-    getPriceRange(range) {
-      return "$".repeat(range);
-    }
+    navigator.geolocation.getCurrentPosition(position => {
+      this.userLat = position.coords.latitude;
+      this.userLong = position.coords.longitude;
+    });
+  }
+
+  getPriceRange(range) {
+    return "$".repeat(range);
+  }
 }

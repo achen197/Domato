@@ -15,7 +15,7 @@
             <select name="cuisine" class="form-control" [(value)]="selectedCuisine" [(ngModel)]="selectedCuisine"
               [ngModelOptions]="{standalone: true}">
               <option value="" disabled>Choose a Cuisine</option>
-              <option *ngFor="let c of cuisine" value="{{c.cuisine_id}}" [selected]="c.cuisine_name === 'Asian'">
+              <option *ngFor="let c of cuisine" value="{{c.cuisine_id}}" selected="c.cuisine_name === 'Asian'">
                 {{c.cuisine_name}}</option>
             </select>
           </div>

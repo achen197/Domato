@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {map, startWith} from 'rxjs/operators';
+import { map, startWith } from 'rxjs/operators';
 import { Cuisine } from 'src/app/model/cuisine';
 import { Category } from 'src/app/model/category';
 import { RestaurantService } from 'src/app/service/restaurant.service';
@@ -37,30 +37,30 @@ export class HomeComponent implements OnInit {
         return this.cuisine;
       });
 
-      this.restaurantService.getCategories()
+    this.restaurantService.getCategories()
       .subscribe(res => {
         this.category = res;
         return this.category;
       });
 
-      this.restaurantService.getTrending()
-        .subscribe(res => {
-          this.trending = res;
-          console.log(res);
-          return this.trending;
-        });
-
-      navigator.geolocation.getCurrentPosition(position => {
-        this.lat = position.coords.latitude;
-        this.long =  position.coords.longitude;
+    this.restaurantService.getTrending()
+      .subscribe(res => {
+        this.trending = res;
+        console.log(res);
+        return this.trending;
       });
+
+    navigator.geolocation.getCurrentPosition(position => {
+      this.lat = position.coords.latitude;
+      this.long = position.coords.longitude;
+    });
 
   }
 
   getUserPosition() {
     navigator.geolocation.getCurrentPosition(position => {
       this.lat = position.coords.latitude;
-      this.long =  position.coords.longitude;
+      this.long = position.coords.longitude;
     });
   }
 
