@@ -72,14 +72,14 @@ export class RestaurantService {
   }
 
   getReviews(id: number): Observable<Review[]> {
-    return this.http.get<ReviewRes>(`https://developers.zomato.com/api/v2.1/reviews?res_id=16593328`, { headers: { 'user-key': this.apiKey } })
+    return this.http.get<ReviewRes>(`https://developers.zomato.com/api/v2.1/reviews?res_id=${id}`, { headers: { 'user-key': this.apiKey } })
       .pipe(map(res => {
         return res.user_reviews.map(arr => arr.review);
       }));
   }
 
   getTrending(): Observable<Search[]> {
-    return this.http.get<SearchRes>("https://developers.zomato.com/api/v2.1/search?entity_id=298&entity_type=city&count=6&collection_id=274852&sort=rating&order=desc", { headers: { 'user-key': this.apiKey } })
+    return this.http.get<SearchRes>("https://developers.zomato.com/api/v2.1/search?entity_id=298&entity_type=city&count=8&collection_id=274852&sort=rating&order=desc", { headers: { 'user-key': this.apiKey } })
       .pipe(map(res => {
         return res.restaurants.map(arr => arr.restaurant)
       }));

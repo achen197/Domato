@@ -22,7 +22,7 @@
           <div class="col-4">
             <select class="form-control" [(value)]="selectedCategory" [(ngModel)]="selectedCategory"
               [ngModelOptions]="{standalone: true}">
-              <option selected>Category</option>
+              <option value="" disabled selected>Choose a Category</option>
               <option *ngFor="let cat of category" value="{{cat.id}}">{{cat.name}}</option>
             </select>
           </div>
@@ -109,7 +109,7 @@
     </div>
   </div>
 
-  <div class="row bob pt-4">
+  <div class="row bob pt-4 pb-5">
     <div class="col-12">
       <h3>Best of Brisbane</h3>
     </div>
@@ -120,16 +120,9 @@
           <a routerLink="/detail/{{s.R.res_id}}">
             <div class="bob-img red" [ngStyle]="{background: 'url(' + s.featured_image + ')'}">
               <h5 class="card-title">{{s.name}}</h5>
-              <!-- <p>{{s.cuisines}}</p> -->
             </div>
           </a>
         </div>
-        <!-- <span class="badge badge-pill badge-light">{{s.cuisines}}</span> 
-          <span class="badge badge-pill badge-light" *ngIf="s.user_rating.votes > 0">{{s.user_rating.aggregate_rating}} 
-            <mat-icon [ngClass]="{'good-rating': s.user_rating.aggregate_rating > 4.5, 'bad-rating': s.user_rating.aggregate_rating < 4.5}">star</mat-icon>
-            ({{s.user_rating.votes}})</span>
-            <span class="badge badge-pill badge-light" *ngIf="s.user_rating.votes <= 0">No Ratings</span>
-            <span class="distance">{{distance[i]}}km</span> -->
       </div>
     </div>
   </div>

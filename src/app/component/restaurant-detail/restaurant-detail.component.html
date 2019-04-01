@@ -9,43 +9,52 @@
   </form>
 </nav>
 <div class="container">
-  <button class="btn" (click)="goBack()">Back to Results</button>
+  <button class="btn btn-outline mt-4 mb-4" (click)="goBack()">Back to Results</button>
   <div *ngIf="rest">
     <div class="container-full restaurant-deets">
       <div class="row featured-img">
-        <div class="feat-img" [ngStyle]="{background: 'url(' + rest.featured_image + ')'}"></div>
+        <div class="col-4">
+          <div class="feat-img" [ngStyle]="{background: 'url(' + rest.featured_image + ')'}"></div>
+        </div>
+        <div class="col-8">
+          <h2>{{rest.name}} <span class="location"> ({{rest.location.locality}})</span></h2>
+          <p>{{getPriceRange(rest.price_range)}}</p>
+          <p>{{rest.cuisines}}</p>
+          <p>Average cost for two: ${{rest.average_cost_for_two}}</p>
+          <p>Address: {{rest.location.address}}</p>
+          <p>Rating: {{rest.user_rating.aggregate_rating}} ({{rest.user_rating.votes}})</p>
+        </div>
       </div>
-      <h2>{{rest.name}} <span class="location"> ({{rest.location.locality}})</span></h2>
-      <p>{{getPriceRange(rest.price_range)}}</p>
-      <span>{{rest.cuisines}}</span>
-      <span>${{rest.average_cost_for_two}}</span>
-      <p>Address: {{rest.location.address}}</p>
-      <p>Rating: {{rest.user_rating.aggregate_rating}} ( {{rest.user_rating.votes}})</p>
     </div>
   </div>
 
   <div class="row">
-    <div class="col-12">
+    <div class="col-12 mt-3">
       <h3>Reviews</h3>
     </div>
     <div class="col-12">
       <div *ngFor="let rev of review">
         <div class="review-card">
-          <span>Rated {{rev.rating}}</span>
-          <div class="rating">
-            <div *ngFor="let r of ' '.repeat(rev.rating).split(''), let x = index">
-              <mat-icon class="good-rating">star</mat-icon>
-            </div>
-            <div *ngFor="let r of ' '.repeat(5 - rev.rating).split(''), let x = index">
-              <mat-icon class="bad-rating">star</mat-icon>
+          <div class="review-deets">
+            <img class="reviewer-img" src="{{rev.user.profile_image}}" alt="">
+            <span class="name">{{rev.user.name}}</span>
+            <span class="handle ml-2" *ngIf="rev.user.zomato_handle != null">
+              <a href="{{rev.user.profile_url}}" target="_blank">@{{rev.user.zomato_handle}}</a>
+            </span>
+          </div>
+          <div class="rating-stars pt-2">
+            <span class="badge badge-pill badge-light">Rated {{rev.rating}}</span> 
+            <div class="rating ml-2">
+              <div *ngFor="let r of ' '.repeat(rev.rating).split(''), let x = index">
+                <mat-icon class="good-rating">star</mat-icon>
+              </div>
+              <div *ngFor="let r of ' '.repeat(5 - rev.rating).split(''), let x = index">
+                <mat-icon class="bad-rating">star</mat-icon>
+              </div>
             </div>
           </div>
-          <div class="review-deets">
-            <img class="reviewer-img" src="{{rev.user.profile_image}}" widthalt="">
-            <span>{{rev.user.name}}</span>
-            <span class="handle ml-2" *ngIf="rev.user.zomato_handle != null">
-              <a href="{{rev.user.profile_url}}" target="_blank">@{{rev.user.zomato_handle}}</a> 
-            </span>
+          <div class="review pt-2">
+            <p>{{rev.review_text}}</p>
           </div>
         </div>
       </div>
