@@ -3,10 +3,11 @@ import { map, startWith } from 'rxjs/operators';
 import { Cuisine } from 'src/app/model/cuisine';
 import { Category } from 'src/app/model/category';
 import { RestaurantService } from 'src/app/service/restaurant.service';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormBuilder, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { SearchService } from 'src/app/service/search.service';
 import { Search } from 'src/app/model/search';
+import { Restaurant } from 'src/app/model/restaurant';
 
 @Component({
   selector: 'app-home',
@@ -20,14 +21,17 @@ export class HomeComponent implements OnInit {
   long: number;
   lat: number;
   location: number;
+  selectedCuisine: string;
+  restaurant: Restaurant[] =[];
 
   constructor(
     private restaurantService: RestaurantService,
-    private searchService: SearchService
+    private formBuilder: FormBuilder
   ) { }
 
   Cuisine = new FormControl();
   Category = new FormControl();
+  domatoForm: FormGroup;
 
   ngOnInit(): void {
 
@@ -50,11 +54,24 @@ export class HomeComponent implements OnInit {
         return this.trending;
       });
 
+    this.restaurantService.getTest()
+      .subscribe(res => {
+        this.restaurant = res;
+        console.log(res);
+        return this.restaurant;
+      });
+
     navigator.geolocation.getCurrentPosition(position => {
       this.lat = position.coords.latitude;
       this.long = position.coords.longitude;
     });
 
+    this.domatoForm = this.formBuilder.group({
+      cuisineControl: ['Asian']
+    });
+
+    // this.selectedCuisine = this.cuisine.find(x => x.cuisine_name === 'Asian').cuisine_name;
+    // this.selectedCuisine = 'Asian';
   }
 
   getUserPosition() {

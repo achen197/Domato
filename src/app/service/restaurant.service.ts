@@ -43,6 +43,10 @@ export class RestaurantService {
     this.long = long;
   }
 
+  getTest(): Observable<Restaurant[]> {
+    return this.http.get<Restaurant[]>("https://localhost:44382/api/restaurants");
+  }
+
   getCategories(): Observable<Category[]> {
     return this.http.get<CategoryRes>("https://developers.zomato.com/api/v2.1/categories", { headers: { 'user-key': this.apiKey } })
       .pipe(map(res => {
@@ -91,8 +95,8 @@ export class RestaurantService {
     selectedCategory = this.selectedCategory;
     lat = this.lat;
     long = this.long;
-    // return this.http.get<SearchRes>(`https://developers.zomato.com/api/v2.1/search?lat=${lat}&lon=${long}&radius=${distance}&cuisines=${selectedCuisine}&category=${selectedCategory}&sort=rating&order=desc`, { headers: {'user-key': this.apiKey} })
-    return this.http.get<SearchRes>(`https://developers.zomato.com/api/v2.1/search?lat=-27.468190399999997&lon=153.0206561&radius=1000&cuisines=${selectedCuisine}&category=${selectedCategory}`, { headers: { 'user-key': this.apiKey } })
+    return this.http.get<SearchRes>(`https://developers.zomato.com/api/v2.1/search?lat=${lat}&lon=${long}&radius=${distance}&cuisines=${selectedCuisine}&category=${selectedCategory}&sort=rating&order=desc`, { headers: {'user-key': this.apiKey} })
+    // return this.http.get<SearchRes>(`https://developers.zomato.com/api/v2.1/search?lat=-27.468190399999997&lon=153.0206561&radius=1000&cuisines=${selectedCuisine}&category=${selectedCategory}`, { headers: { 'user-key': this.apiKey } })
       .pipe(map(res => {
         return res.restaurants.map(arr => arr.restaurant)
       }));

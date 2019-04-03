@@ -30,7 +30,8 @@ import { RestaurantDetailComponent } from './component/restaurant-detail/restaur
     BrowserAnimationsModule,
     MatAutocompleteModule,
     MatInputModule,
-    MatSelectModule,MatIconModule
+    MatSelectModule,
+    MatIconModule
   ],
   providers: [RestaurantService],
   bootstrap: [AppComponent]
