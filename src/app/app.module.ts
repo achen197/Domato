@@ -11,15 +11,17 @@ import { RestaurantService } from './service/restaurant.service';
 import { HomeComponent } from './component/home/home.component';
 
 import { MatAutocompleteModule , MatInputModule, MatSelectModule,
-  MatIconModule} from '@angular/material';
+  MatIconModule, MatTableModule} from '@angular/material';
 import { RestaurantDetailComponent } from './component/restaurant-detail/restaurant-detail.component';
+import { AllRestaurantsComponent } from './component/all-restaurants/all-restaurants.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListComponent,
     HomeComponent,
-    RestaurantDetailComponent
+    RestaurantDetailComponent,
+    AllRestaurantsComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +33,8 @@ import { RestaurantDetailComponent } from './component/restaurant-detail/restaur
     MatAutocompleteModule,
     MatInputModule,
     MatSelectModule,
-    MatIconModule
+    MatIconModule,
+    MatTableModule
   ],
   providers: [RestaurantService],
   bootstrap: [AppComponent]

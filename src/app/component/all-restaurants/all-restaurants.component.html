@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <a href="#">
+      <button class="btn btn-outline mt-4 mb-4">Add Restaurant</button>
+    </a>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Location</th>
+          <th>Cuisine</th>
+          <th>Rating</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let t of trending">
+          <td>{{t.id}}</td>
+          <td>{{t.name}}</td>
+          <td>{{t.location}}</td>
+          <td>{{t.cuisine}}</td>
+          <td>{{t.rating}} ({{t.votes}})</td>
+          <td>
+            <a href="#">Edit</a>
+            <a href="#">Delete</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
