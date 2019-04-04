@@ -3,7 +3,7 @@ export class SearchRes {
 }
 
 export class SearchWrapper {
-    restaurant: Search;   
+    restaurant: Search;
 }
 export class Search {
     id: string;

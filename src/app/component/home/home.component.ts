@@ -17,12 +17,12 @@ export class HomeComponent implements OnInit {
 
   cuisine: Cuisine[] = [];
   category: Category[] = [];
-  trending: Search[] = [];
+  trending: Restaurant[] = [];
   long: number;
   lat: number;
   location: number;
   selectedCuisine: string;
-  restaurant: Restaurant[] =[];
+  // restaurant: Restaurant[] =[];
 
   constructor(
     private restaurantService: RestaurantService,
@@ -52,13 +52,6 @@ export class HomeComponent implements OnInit {
         this.trending = res;
         console.log(res);
         return this.trending;
-      });
-
-    this.restaurantService.getTest()
-      .subscribe(res => {
-        this.restaurant = res;
-        console.log(res);
-        return this.restaurant;
       });
 
     navigator.geolocation.getCurrentPosition(position => {

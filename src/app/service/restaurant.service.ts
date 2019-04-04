@@ -43,8 +43,8 @@ export class RestaurantService {
     this.long = long;
   }
 
-  getTest(): Observable<Restaurant[]> {
-    return this.http.get<Restaurant[]>("https://localhost:44382/api/restaurants");
+  getTrending(): Observable<Restaurant[]> {
+    return this.http.get<Restaurant[]>('https://localhost:44382/api/restaurants');
   }
 
   getCategories(): Observable<Category[]> {
@@ -82,12 +82,12 @@ export class RestaurantService {
       }));
   }
 
-  getTrending(): Observable<Search[]> {
-    return this.http.get<SearchRes>("https://developers.zomato.com/api/v2.1/search?entity_id=298&entity_type=city&count=8&collection_id=274852&sort=rating&order=desc", { headers: { 'user-key': this.apiKey } })
-      .pipe(map(res => {
-        return res.restaurants.map(arr => arr.restaurant)
-      }));
-  }
+  // getTrending(): Observable<Search[]> {
+  //   return this.http.get<SearchRes>("https://developers.zomato.com/api/v2.1/search?entity_id=298&entity_type=city&count=8&collection_id=274852&sort=rating&order=desc", { headers: { 'user-key': this.apiKey } })
+  //     .pipe(map(res => {
+  //       return res.restaurants.map(arr => arr.restaurant)
+  //     }));
+  // }
 
   getSearch(distance, selectedCuisine, selectedCategory, lat, long): Observable<Search[]> {
     distance = this.distance;

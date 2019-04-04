@@ -116,8 +116,8 @@
     <div class="row recommended">
       <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" *ngFor="let s of trending; let i = index;">
         <div class="img-container">
-          <a routerLink="/detail/{{s.R.res_id}}">
-            <div class="bob-img red" [ngStyle]="{background: 'url(' + s.featured_image + ')'}">
+          <a routerLink="/detail/{{s.id}}">
+            <div class="bob-img red" [ngStyle]="{background: 'url(' + s.featuredImage + ')'}">
               <h5 class="card-title">{{s.name}}</h5>
             </div>
           </a>
