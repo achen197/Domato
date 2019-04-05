@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map, combineLatest } from 'rxjs/operators'
 import { merge } from 'rxjs';
 import { Observable } from 'rxjs';
-import { Category, ThingWrapper, CategoryRes } from '../model/category';
+import { Category } from '../model/category';
 import { Cuisine, CuisineRes } from '../model/cuisine';
 import { Restaurant } from '../model/restaurant';
 import { Search, SearchRes } from '../model/search';
@@ -16,7 +16,9 @@ export class RestaurantService {
 
   constructor(private http: HttpClient) { }
 
-  apiKey = "aec302bd2bf3ac9c4cc94f8536a12bc3";
+  private headers: HttpHeaders;
+  private apiKey = 'aec302bd2bf3ac9c4cc94f8536a12bc3';
+  private localHost = 'https://localhost:44382/api/';
   private distance: number;
   private selectedCuisine: number;
   private selectedCategory: number;
@@ -44,14 +46,11 @@ export class RestaurantService {
   }
 
   getTrending(): Observable<Restaurant[]> {
-    return this.http.get<Restaurant[]>('https://localhost:44382/api/restaurants');
+    return this.http.get<Restaurant[]>(this.localHost + 'restaurants');
   }
 
   getCategories(): Observable<Category[]> {
-    return this.http.get<CategoryRes>("https://developers.zomato.com/api/v2.1/categories", { headers: { 'user-key': this.apiKey } })
-      .pipe(map(res => {
-        return res.categories.map(arr => arr.categories)
-      }));
+    return this.http.get<Category[]>(this.localHost + 'categories');
   }
 
   getCategory(id, lat, long): Observable<Search[]> {
@@ -100,6 +99,18 @@ export class RestaurantService {
       .pipe(map(res => {
         return res.restaurants.map(arr => arr.restaurant)
       }));
+  }
+
+  CreateRestaurant(payload) {
+    return this.http.post(this.localHost + 'restaurants', payload, {headers: this.headers});
+  }
+
+  DeleteRestaurant(payload) {
+    return this.http.delete(this.localHost + 'restaurants' + '/' + payload.id, {headers: this.headers});
+  }
+
+  UpdateRestaurant(payload) {
+    return this.http.put(this.localHost + 'restaurants'  + '/' + payload.id, payload, {headers: this.headers});
   }
 }
 

@@ -14,6 +14,7 @@ import { MatAutocompleteModule , MatInputModule, MatSelectModule,
   MatIconModule, MatTableModule} from '@angular/material';
 import { RestaurantDetailComponent } from './component/restaurant-detail/restaurant-detail.component';
 import { AllRestaurantsComponent } from './component/all-restaurants/all-restaurants.component';
+import { AddEditRestaurantComponent } from './component/add-edit-restaurant/add-edit-restaurant.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { AllRestaurantsComponent } from './component/all-restaurants/all-restaur
     ListComponent,
     HomeComponent,
     RestaurantDetailComponent,
-    AllRestaurantsComponent
+    AllRestaurantsComponent,
+    AddEditRestaurantComponent
   ],
   imports: [
     BrowserModule,
