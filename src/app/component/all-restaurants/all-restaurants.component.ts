@@ -10,7 +10,7 @@ import { EventEmitter } from 'events';
   styleUrls: ['./all-restaurants.component.scss']
 })
 export class AllRestaurantsComponent implements OnInit {
-  trending: Restaurant[];
+  // trending: Restaurant[];
   currentRestaurant: any;
   restaurantData: Array<any>;
   // restaurantData: Restaurant[];
@@ -44,10 +44,11 @@ export class AllRestaurantsComponent implements OnInit {
       if (restaurantWithId) {
         const updateIndex = _.findIndex(this.restaurantData, {id: restaurantWithId.id});
         this.restaurantService.UpdateRestaurant(restaurant)
-          .subscribe(restaurantRecord => this.restaurantData.splice(updateIndex, 1, restaurant));
+          .subscribe(restaurantRecord => this.restaurantData.splice(updateIndex, 1, restaurantRecord));
       } else {
         this.restaurantService.CreateRestaurant(restaurant)
           .subscribe((restaurantRecord: Restaurant) => {
+            // debugger;
             this.restaurantData.push(restaurantRecord);
           });
       }
@@ -56,11 +57,11 @@ export class AllRestaurantsComponent implements OnInit {
     }
 
     ngOnInit() {
-      this.restaurantService.get()
-      .subscribe((data: any) => {
-        this.trending = data;
-        return this.trending;
-      });
+      // this.restaurantService.get()
+      // .subscribe((data: any) => {
+      //   this.restaurantData = data;
+      //   return this.restaurantData;
+      // });
     }
 
   editClicked(record) {
@@ -75,7 +76,6 @@ export class AllRestaurantsComponent implements OnInit {
     const deleteIndex = _.findIndex(this.restaurantData, {id: record.id});
     this.restaurantService.DeleteRestaurant(record)
       .subscribe(result => {
-        // debugger;
         this.restaurantData.splice(deleteIndex, 1);
       });
   }
