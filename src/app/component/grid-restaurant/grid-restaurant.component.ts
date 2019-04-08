@@ -37,13 +37,11 @@ export class GridRestaurantComponent implements OnInit {
   }
 
   deleteRecord(record) {
-    console.log('delete' + record);
     this.recordDeleted.emit(record);
   }
 
   editRecord(record) {
     const clonedRecord = Object.assign({}, record);
-    console.log('testing' + clonedRecord);
     this.editClicked.emit(clonedRecord);
   }
 
