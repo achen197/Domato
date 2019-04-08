@@ -3,7 +3,7 @@ import { Cuisine } from 'src/app/model/cuisine';
 import { RestaurantService } from 'src/app/service/restaurant.service';
 import { Category } from 'src/app/model/category';
 import { Restaurant } from 'src/app/model/restaurant';
-import { FormControl, FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormGroupName } from '@angular/forms';
 
 @Component({
   selector: 'app-add-edit-restaurant',
@@ -13,51 +13,61 @@ import { FormControl, FormBuilder, FormGroup } from '@angular/forms';
 export class AddEditRestaurantComponent implements OnInit {
 
   @Output() restaurantCreated = new EventEmitter<any>();
-  @Input() restaurantInfo: Restaurant;
+  @Input() restaurantInfo: any;
 
   cuisine: Cuisine[] = [];
   category: Category[] = [];
   selectedCuisine: string;
-  // restaurantInfo: Restaurant[] = [];
+  currentRestaurant: any;
 
-  restaurantForm = new FormGroup({
-    name: new FormControl()
-  });
+  restaurantForm: FormGroup;
 
-constructor(
-  private restaurantService: RestaurantService
-) {
-  this.clearRestaurantInfo();
-}
+  constructor(
+    private restaurantService: RestaurantService,
+    private _formBuilder: FormBuilder,
+  ) {
+    this.clearRestaurantInfo();
+  }
 
-ngOnInit() {
-  this.restaurantService.getCategories()
-    .subscribe(res => {
-      this.category = res;
-      console.log(res);
-      return this.category;
+  ngOnInit() {
+    this.restaurantService.getCategories()
+      .subscribe(res => {
+        this.category = res;
+        console.log(res);
+        return this.category;
+      });
+
+    this.restaurantForm = this._formBuilder.group({
+      name: ['', Validators.required],
+      location: ['', Validators.required],
+      locality: ['', Validators.required],
+      cuisine: ['', Validators.required],
+      cost: ['', Validators.required],
+      price: ['', Validators.required],
+      image: ['', Validators.required],
+      rating: ['', Validators.required],
+      votes: ['', Validators.required]
     });
+  }
 
-}
+  clearRestaurantInfo() {
+    this.restaurantInfo = {
+      id: undefined,
+      name: '',
+      location: '',
+      locaility: '',
+      cuisine: '',
+      averageCost: '',
+      priceRange: '',
+      featuredImage: '',
+      userRating: '',
+      votes: '',
+    };
+  }
 
-clearRestaurantInfo() {
-  this.restaurantInfo = {
-    id: undefined,
-    name: '',
-    location: '',
-    locaility: '',
-    cuisine: '',
-    averageCost: '',
-    priceRange: '',
-    featuredImage: '',
-    userRating: '',
-    votes: '',
-  };
-}
-
-addOrEditRestaurant(event) {
-  this.restaurantCreated.emit(this.restaurantInfo);
-  this.clearRestaurantInfo();
-}
+  addOrEditRestaurant(event) {
+    this.restaurantCreated.emit(this.restaurantInfo);
+    this.clearRestaurantInfo();
+  }
 
 }

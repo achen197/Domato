@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+      <button class="btn btn-outline mt-4 mb-4" (click)="newRestaurant()">Add Restaurant</button>
+    <table>
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Location</th>
+          <!-- <th>Cuisine</th> -->
+          <th>Rating</th>
+          <th>Edit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let t of trending">
+          <td>{{t.id}}</td>
+          <td>{{t.name}}</td>
+          <td>{{t.location}}</td>
+          <!-- <td>{{t.cuisine}}</td> -->
+          <td>{{t.userRating}} ({{t.votes}})</td>
+          <td>
+            <a (click)="editRecord(t)" class="link">Edit</a>
+            <a (click)="deleteRecord(t)" class="link ml-2">Delete</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

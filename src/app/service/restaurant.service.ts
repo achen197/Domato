@@ -13,10 +13,15 @@ import { Review, ReviewRes } from '../model/review';
   providedIn: 'root'
 })
 export class RestaurantService {
-
-  constructor(private http: HttpClient) { }
-
   private headers: HttpHeaders;
+
+  constructor(private http: HttpClient) {
+  this.headers = new HttpHeaders({
+    'Content-Type': 'application/json; charset=utf-8',
+    
+  });
+  }
+
   private apiKey = 'aec302bd2bf3ac9c4cc94f8536a12bc3';
   private localHost = 'https://localhost:44382/api/';
   private distance: number;
@@ -99,6 +104,10 @@ export class RestaurantService {
       .pipe(map(res => {
         return res.restaurants.map(arr => arr.restaurant)
       }));
+  }
+
+  get() {
+    return this.http.get(this.localHost + 'restaurants', {headers: this.headers});
   }
 
   CreateRestaurant(payload) {

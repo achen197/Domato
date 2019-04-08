@@ -1,39 +1,10 @@
 <div class="container">
-  
-  <div class="row">
-    <a href="/edit">
-      <button class="btn btn-outline mt-4 mb-4">Add Restaurant</button>
-    </a>
-
-    <table>
-      <thead>
-        <tr>
-          <th>Id</th>
-          <th>Name</th>
-          <th>Location</th>
-          <th>Cuisine</th>
-          <th>Rating</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let t of trending">
-          <td>{{t.id}}</td>
-          <td>{{t.name}}</td>
-          <td>{{t.location}}</td>
-          <td>{{t.cuisine}}</td>
-          <td>{{t.rating}} ({{t.votes}})</td>
-          <td>
-            <a href="#">Edit</a>
-            <a href="#">Delete</a>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="row">
-    <div class="col-4">
-        <app-add-edit-restaurant></app-add-edit-restaurant>
+    <div class="row">
+      <div class="col-md-4">
+          <app-add-edit-restaurant (restaurantCreated)="createOrUpdateRestaurant($event)" [restaurantInfo]="currentRestaurant"></app-add-edit-restaurant>
+      </div>
+      <div class="col-md-8">
+          <app-grid-restaurant [restaurantData]="restaurantData" (editClicked)="editClicked($event)" (newClicked)="newClicked()" (recordDeleted)="deleteClicked($event)"></app-grid-restaurant>
+      </div>
     </div>
-  </div>
 </div>
