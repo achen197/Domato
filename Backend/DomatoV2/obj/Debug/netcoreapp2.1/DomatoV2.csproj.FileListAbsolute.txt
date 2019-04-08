@@ -1,0 +1,14 @@
+C:\Users\Amand\source\repos\DomatoV2\DomatoV2\bin\Debug\netcoreapp2.1\DomatoV2.deps.json
+C:\Users\Amand\source\repos\DomatoV2\DomatoV2\bin\Debug\netcoreapp2.1\DomatoV2.runtimeconfig.json
+C:\Users\Amand\source\repos\DomatoV2\DomatoV2\bin\Debug\netcoreapp2.1\DomatoV2.runtimeconfig.dev.json
+C:\Users\Amand\source\repos\DomatoV2\DomatoV2\bin\Debug\netcoreapp2.1\DomatoV2.dll
+C:\Users\Amand\source\repos\DomatoV2\DomatoV2\obj\Debug\netcoreapp2.1\DomatoV2.csprojAssemblyReference.cache
+C:\Users\Amand\source\repos\DomatoV2\DomatoV2\obj\Debug\netcoreapp2.1\DomatoV2.csproj.CoreCompileInputs.cache
+C:\Users\Amand\source\repos\DomatoV2\DomatoV2\obj\Debug\netcoreapp2.1\DomatoV2.RazorAssemblyInfo.cache
+C:\Users\Amand\source\repos\DomatoV2\DomatoV2\obj\Debug\netcoreapp2.1\DomatoV2.RazorAssemblyInfo.cs
+C:\Users\Amand\source\repos\DomatoV2\DomatoV2\obj\Debug\netcoreapp2.1\DomatoV2.AssemblyInfoInputs.cache
+C:\Users\Amand\source\repos\DomatoV2\DomatoV2\obj\Debug\netcoreapp2.1\DomatoV2.AssemblyInfo.cs
+C:\Users\Amand\source\repos\DomatoV2\DomatoV2\obj\Debug\netcoreapp2.1\DomatoV2.RazorTargetAssemblyInfo.cache
+C:\Users\Amand\source\repos\DomatoV2\DomatoV2\bin\Debug\netcoreapp2.1\DomatoV2.pdb
+C:\Users\Amand\source\repos\DomatoV2\DomatoV2\obj\Debug\netcoreapp2.1\DomatoV2.dll
+C:\Users\Amand\source\repos\DomatoV2\DomatoV2\obj\Debug\netcoreapp2.1\DomatoV2.pdb
