@@ -13,9 +13,8 @@ export class GridRestaurantComponent implements OnInit {
   @Output() recordDeleted = new EventEmitter<any>();
   @Output() newClicked = new EventEmitter<any>();
   @Output() editClicked = new EventEmitter<any>();
-  @Input() restaurantData: Restaurant[] = [];
+  @Input() restaurantData: Restaurant[];
 
-  // restaurantData: Restaurant[] = [];
   restaurantForm: FormGroup;
 
   constructor(
@@ -24,13 +23,6 @@ export class GridRestaurantComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.restaurantService.get()
-    .subscribe(res => {
-      this.restaurantData = res;
-      console.log(res);
-      return this.restaurantData;
-    });
-
     this.restaurantForm = this._formBuilder.group({
       name: ['', Validators.required],
       location: ['', Validators.required],

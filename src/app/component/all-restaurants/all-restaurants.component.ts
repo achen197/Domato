@@ -44,11 +44,12 @@ export class AllRestaurantsComponent implements OnInit {
       if (restaurantWithId) {
         const updateIndex = _.findIndex(this.restaurantData, {id: restaurantWithId.id});
         this.restaurantService.UpdateRestaurant(restaurant)
-          .subscribe(restaurantRecord => this.restaurantData.splice(updateIndex, 1, restaurantRecord));
+          .subscribe(restaurantRecord => {
+            this.restaurantData.splice(updateIndex, 1, restaurant);
+          });
       } else {
         this.restaurantService.CreateRestaurant(restaurant)
           .subscribe((restaurantRecord: Restaurant) => {
-            // debugger;
             this.restaurantData.push(restaurantRecord);
           });
       }
@@ -57,11 +58,11 @@ export class AllRestaurantsComponent implements OnInit {
     }
 
     ngOnInit() {
-      // this.restaurantService.get()
-      // .subscribe((data: any) => {
-      //   this.restaurantData = data;
-      //   return this.restaurantData;
-      // });
+      this.restaurantService.get()
+      .subscribe((data: any) => {
+        this.restaurantData = data;
+        return this.restaurantData;
+      });
     }
 
   editClicked(record) {

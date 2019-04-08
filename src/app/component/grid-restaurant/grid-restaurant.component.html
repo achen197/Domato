@@ -13,15 +13,15 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let t of restaurantData">
-          <td>{{t.id}}</td>
-          <td>{{t.name}}</td>
-          <td>{{t.location}}</td>
-          <!-- <td>{{t.cuisine}}</td> -->
-          <td>{{t.userRating}} ({{t.votes}})</td>
+        <tr *ngFor="let rd of restaurantData">
+          <td>{{rd.id}}</td>
+          <td>{{rd.name}}</td>
+          <td>{{rd.location}}</td>
+          <!-- <td>{{rd.cuisine}}</td> -->
+          <td>{{rd.userRating}} ({{rd.votes}})</td>
           <td>
-            <a (click)="editRecord(t)" class="link">Edit</a>
-            <a (click)="deleteRecord(t)" class="link ml-2">Delete</a>
+            <a (click)="editRecord(rd)" class="link">Edit</a>
+            <a (click)="deleteRecord(rd)" class="link ml-2">Delete</a>
           </td>
         </tr>
       </tbody>
