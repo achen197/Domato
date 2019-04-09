@@ -68,12 +68,6 @@ export class ListComponent implements OnInit {
         return this.search, this.distance;
       });
 
-    // this.restaurantService.getReviews(this.id)
-    //   .subscribe(res => {
-    //     console.l
-    //     this.review = res;
-    //   });
-
     navigator.geolocation.getCurrentPosition(position => {
       this.userLat = position.coords.latitude;
       this.userLong = position.coords.longitude;
