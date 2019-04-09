@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
 
   cuisine: Cuisine[] = [];
   category: Category[] = [];
-  trending: Restaurant[] = [];
+  trending: Search[] = [];
   long: number;
   lat: number;
   location: number;
