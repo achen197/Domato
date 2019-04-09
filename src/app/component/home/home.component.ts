@@ -58,13 +58,6 @@ export class HomeComponent implements OnInit {
       this.lat = position.coords.latitude;
       this.long = position.coords.longitude;
     });
-
-    this.domatoForm = this.formBuilder.group({
-      cuisineControl: ['Asian']
-    });
-
-    // this.selectedCuisine = this.cuisine.find(x => x.cuisine_name === 'Asian').cuisine_name;
-    // this.selectedCuisine = 'Asian';
   }
 
   getUserPosition() {
