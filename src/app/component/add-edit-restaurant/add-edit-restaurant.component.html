@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="row">
+    <h2 *ngIf="!restaurantInfo || restaurantInfo.id === undefined">Add Restaurant</h2>
+    <h2 *ngIf="restaurantInfo && restaurantInfo.id !== undefined">Update {{restaurantInfo.name}}</h2>
+  </div>
+    <div class="row">
+    <form [formGroup]="restaurantForm">
+        <div class="form-group">
+            <label for="name-input">Restaurant Name:</label>
+            <input type="text" id="name-input" [(ngModel)]="restaurantInfo.name" formControlName="name" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label for="location-input">Location</label>
+            <input type="text" id="location-input" [(ngModel)]="restaurantInfo.location" formControlName="location" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label for="locality-input">Locality</label>
+            <input type="text" id="locality-input" [(ngModel)]="restaurantInfo.locality" formControlName="locality" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label for="cuisine-input">Category</label>
+            <select name="cuisine" class="form-control" [(value)]="selectedCuisine" [(ngModel)]="restaurantInfo.selectedCuisine" formControlName="cuisine">
+                <option *ngFor="let c of category" value="{{c.id}}" selected="c.name === 'Cafes'">
+                  {{c.name}}</option>
+              </select>
+        </div>
+        <div class="form-group">
+            <label for="cost-input">Average Cost</label>
+            <input type="text" id="cost-input" [(ngModel)]="restaurantInfo.averageCost"class="form-control" formControlName="cost"/>
+        </div>
+        <div class="form-group">
+            <label for="priceRange-input">Price Range</label>
+            <input type="text" id="priceRange-input" [(ngModel)]="restaurantInfo.priceRange" class="form-control" formControlName="price"/>
+        </div>
+        <div class="form-group">
+            <label for="featuredImage-input">Featured Image</label>
+            <input type="text" id="featuredImage-input" [(ngModel)]="restaurantInfo.featuredImage" class="form-control" formControlName="image"/>
+        </div>
+        <div class="form-group">
+            <label for="userRating-input">User Rating</label>
+            <input type="text" id="userRating-input" [(ngModel)]="restaurantInfo.userRating" class="form-control" formControlName="rating"/>
+        </div>
+        <div class="form-group">
+            <label for="votes-input">Votes</label>
+            <input type="text" id="votes-input" [(ngModel)]="restaurantInfo.votes" class="form-control" formControlName="votes"/>
+        </div>
+        <button  *ngIf="!restaurantInfo || restaurantInfo.id === undefined" type="button" (click)="addOrEditRestaurant($event)" class="btn btn-primary">Add</button>
+        <button  *ngIf="restaurantInfo && restaurantInfo.id !== undefined" type="button" (click)="addOrEditRestaurant($event)" class="btn btn-primary">Save</button>
+
+    </form>
+
+  </div>
+</div>

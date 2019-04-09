@@ -17,12 +17,12 @@ export class HomeComponent implements OnInit {
 
   cuisine: Cuisine[] = [];
   category: Category[] = [];
-  trending: Search[] = [];
+  trending: Restaurant[] = [];
   long: number;
   lat: number;
   location: number;
   selectedCuisine: string;
-  restaurant: Restaurant[] =[];
+  // restaurant: Restaurant[] =[];
 
   constructor(
     private restaurantService: RestaurantService,
@@ -54,24 +54,10 @@ export class HomeComponent implements OnInit {
         return this.trending;
       });
 
-    this.restaurantService.getTest()
-      .subscribe(res => {
-        this.restaurant = res;
-        console.log(res);
-        return this.restaurant;
-      });
-
     navigator.geolocation.getCurrentPosition(position => {
       this.lat = position.coords.latitude;
       this.long = position.coords.longitude;
     });
-
-    this.domatoForm = this.formBuilder.group({
-      cuisineControl: ['Asian']
-    });
-
-    // this.selectedCuisine = this.cuisine.find(x => x.cuisine_name === 'Asian').cuisine_name;
-    // this.selectedCuisine = 'Asian';
   }
 
   getUserPosition() {
@@ -83,7 +69,6 @@ export class HomeComponent implements OnInit {
 
   setCategory(id) {
     this.restaurantService.setCategory(id, this.lat, this.long);
-    console.log(id);
   }
 
   setValue(distance, selectedCuisine, selectedCategory) {

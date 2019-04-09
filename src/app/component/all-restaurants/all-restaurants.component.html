@@ -1,0 +1,10 @@
+<div class="container">
+    <div class="row mt-3">
+      <div class="col-md-4 mt-3">
+          <app-add-edit-restaurant (restaurantCreated)="createOrUpdateRestaurant($event)" [restaurantInfo]="currentRestaurant"></app-add-edit-restaurant>
+      </div>
+      <div class="col-md-8">
+          <app-grid-restaurant [restaurantData]="restaurantData" (editClicked)="editClicked($event)" (newClicked)="newClicked()" (recordDeleted)="deleteClicked($event)"></app-grid-restaurant>
+      </div>
+    </div>
+</div>

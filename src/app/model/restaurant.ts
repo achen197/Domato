@@ -1,11 +1,12 @@
 export class Restaurant {
-    id: string;
+    id: number;
     name: string;
-    address: string;
+    cuisine: string;
+    location: string;
     locaility: string;
-    average_cost: string;
-    price_range: string;
-    featured_image: string;
-    user_rating: string;
+    averageCost: string;
+    priceRange: string;
+    featuredImage: string;
+    userRating: string;
     votes: string;
 }

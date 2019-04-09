@@ -184,6 +184,23 @@ h5 {
     }
 }
 
+
+.btn-outline {
+  background: none;
+  border: 2px solid #ffafbd;
+  color: #ffafbd;
+  border-radius: 5px;
+
+  &:hover {
+      background: #ff6e7e;
+      color: white;
+      transition: ease-in-out 0.2s;
+      -webkit-transition: ease-in-out 0.2s;
+      border: 2px solid #ff6e7e;
+  }
+}
+
+
 .badge-pill {
     display: inline-flex;
     align-items: center;
